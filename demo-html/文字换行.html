@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文字换行</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
+     <style>
+     	
+     	p{
+     		/*TEXT-JUSTIFY: inter-ideograph; 
+     		TEXT-ALIGN: justify;*/
+     		text-align: justify;
+     		/*text-justify: inter-ideograph; */
+     	}
+     	div{
+     		word-break:break-all;
+     		/*word-break:break-word*/
+     	}
+     	span{
+     		margin-bottom: 30px;
+     		font-size: 20px;
+     		font-weight: bolder;
+     	}
+     </style>     
+</head>
+<body>
+	<span title='text-align: justify;'>
+		p:text-align: justify;
+	</span>
+	
+	<p>
+		在最新发布的《2016中国高净值人群出国需求与趋势白皮书》中我们可以看到：
+		近五成的高净值人士表示继续增加海外金融资产的配置，目前这些占他们投资资产的16%，而
+		海外保险占海外金融投资比高达45%。
+		他们为什么会选择海外保险作为资产配置的重要部分呢？我们专门精心策划了关于海外保险的专题，涵盖海外保险基本种类介绍、挑选攻略、风险揭示等详尽的内容，对有海外投资需求的高净值人士有重要参考价值。
+	</p>
+	
+	<span>
+		div:word-break:break-all;
+	     	word-break:break-all
+    </span>
+
+	<div>
+		在最新发布的《2016中国高净值人群出国需求与趋势白皮书》中我们可以看到：
+		近五成的高净值人士表示继续增加海外金融资产的配置，目前这些占他们投资资产的16%，而
+		海外保险占海外金融投资比高达45%。
+		他们为什么会选择海外保险作为资产配置的重要部分呢？我们专门精心策划了关于海外保险的专题，涵盖海外保险基本种类介绍、挑选攻略、风险揭示等详尽的内容，对有海外投资需求的高净值人士有重要参考价值。
+	</div>
+	<input type="file" value="文件">
+	<input type="image" value='图片'>
+	<script>
+		console.log(!!undefined)
+		console.log(!!1)
+	</script>
+</body>
+
+</html>

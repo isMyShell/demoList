@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>:) :)</title>
+	<style>
+		#historyMsg{
+			border: 1px solid #333;
+			width: 400px;
+			height: 300px;
+			overflow-x: hidden;
+			overflow-y: scroll;
+		}
+	</style>
+</head>
+<body>
+	 
+	<div id='historyMsg'></div>
+	
+	
+	<input type="text" placeHolder="nickname" id="nicknameInput" />
+    <input type="button" value="OK" id="loginBtn" />
+    <br>
+	<input id='messageInput' type="text" >
+	<button id='sendBtn'>sendBtn</button>
+	<script src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript">
+		var socket=io.connect();
+		//设置昵称
+		document.getElementById('loginBtn').addEventListener('click', function() {
+		    var nickName = document.getElementById('nicknameInput').value;
+		    //检查昵称输入框是否为空
+		    if (nickName.trim().length != 0) {
+		        //不为空，则发起一个login事件并将输入的昵称发送到服务器
+		        socket.emit('login', nickName);
+		    } else {
+		        //否则输入框获得焦点
+		        document.getElementById('nicknameInput').focus();
+		    };
+		}, false);
+		socket.on('loginSuccess', function() {
+            document.title = ':) | ' + document.getElementById('nicknameInput').value;
+        });
+		//发送消息到后台
+		document.getElementById('sendBtn').addEventListener('click', function() {
+		    var messageInput = document.getElementById('messageInput'),
+		        msg = messageInput.value;
+			    messageInput.value = '';
+			    messageInput.focus();
+			    if (msg.trim().length != 0) {
+			    	console.log('me')
+			        socket.emit('postMsg', msg); //把消息发送到服务器
+			        displayNewMsg('me', msg); //把自己的消息显示到自己的窗口中
+			    };
+		}, false);
+
+		 displayNewMsg=function(user, msg, color) {
+	        var container = document.getElementById('historyMsg'),
+	            msgToDisplay = document.createElement('p'),
+	            date = new Date().toTimeString().substr(0, 8);
+		        msgToDisplay.style.color = color || '#000';
+		        msgToDisplay.innerHTML = user + '<span class="timespan">(' + date + '): </span>' + msg;
+		        container.appendChild(msgToDisplay);
+		        container.scrollTop = container.scrollHeight;
+	    }
+
+	    socket.on('newMsg', function(user, msg) {
+		    displayNewMsg(user, msg);
+		});
+
+
+
+		
+</script>
+</body>
+</html>
