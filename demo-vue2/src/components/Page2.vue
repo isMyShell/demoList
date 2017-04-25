@@ -1,10 +1,7 @@
 <template>
   <div class="Page2">
     <h1>{{ msg }}</h1>
-    <span @click="toDemo(1)">瀑布流CSS3</span>
-    <span @click='toDemo(2)'>table切换</span>
-    <span @click='toDemo(3)'>唤醒app</span>
-    <span @click='toDemo(4)'>loading遮罩</span>
+    <span v-for='(item,index) in demoList' @click="toDemo(index)">{{item.title}}</span>
   </div>
 </template>
 
@@ -13,24 +10,39 @@ export default {
   name: 'Page2',
   data () {
     return {
-      msg: 'demoList'
+      msg: 'demoList',
+      demoList:[
+        {title:"瀑布流CSS3"},
+        {title:"table切换"},
+        {title:"唤醒app"},
+        {title:"loading遮罩"},
+        {title:"本地图片上传裁剪"},
+        {title:"手机登陆"}
+      ]
     }
   },
   methods:{
     toDemo(n){
+      let i = 0
       switch(n)
       {
-      case 1:
+      case 0:
         this.$router.push({path:'/demoList/waterfall'})
         break;
-      case 2:
+      case 1:
         this.$router.push({path:'/Page5'})
         break;
-      case 3:
+      case 2:
         this.$router.push({path:'/Home'})
         break;
-      case 4:
+      case 3:
         this.$router.push({path:'/Page1'})
+        break;
+      case 4:
+        this.$router.push({path:'/demoList/imgUpload'})
+        break;
+      case 5:
+        this.$router.push({path:'/demoList/login'})
         break;
       }
 

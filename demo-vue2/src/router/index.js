@@ -7,6 +7,8 @@ import Page3 from '../components/Page3'
 import Page4 from '../components/Page4'
 import Page5 from '../components/page5'
 import waterfall from '../components/demoList/waterfall'
+import imgUpload from '../components/demoList/imgUpload'
+import login from '../components/demoList/login.vue'
 
 Vue.use(Router)
 
@@ -52,12 +54,22 @@ export default new Router({
       path: '/demoList/waterfall',
       name: 'waterfall',
       component: waterfall
+    },
+    {
+      path: '/demoList/imgUpload',
+      name: 'imgUpload',
+      component: imgUpload
+    },
+		{
+      path: '/demoList/login',
+      name: 'login',
+      component: login
     }
   ],
-  scrollBehavior (Page3, Page2, savedPosition) {
-    // return 期望滚动到哪个的位置
-    //savedPosition.y = 100
-    console.log(savedPosition)
-    return savedPosition
-  }
+  // scrollBehavior (Page3, Page2, savedPosition) {
+  //   // return 期望滚动到哪个的位置
+  //   //savedPosition.y = 100
+  //   console.log(savedPosition)
+  //   return savedPosition
+  // }
 })
