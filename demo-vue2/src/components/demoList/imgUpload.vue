@@ -3,8 +3,10 @@
     <h3>图片上传 裁剪</h3>
     <input ref='input' type="file" class="file" accept="image/*;capture=camera" name="img" @change="clipImg($event)">
     <canvas id="canvas" style="display: none"></canvas>
-    <div ref='cont' class="cont">
-    	<img :src="imgSrc" alt="">
+    <div class="clip">
+      <div ref='cont' class="cont">
+      	<img :src="imgSrc" alt="" class="img" ref='img'>
+      </div>
     </div>
   </div>
 </template>
@@ -34,29 +36,14 @@ export default {
         image.onload = () => {
           console.log(image);
           _this.imgSrc = image.src
-          // console.log(image.height);
-          // console.log(image.width);
-          var oH = image.height
-          var oW = image.width
-          var size = 0
-          var oScale = 1;
-          if(oW >= oH){
-            size = oW
-            oScale = oH / oW
-            size=size>window.screen.width?window.screen.width:size
-            _this.$refs.cont.style.width = size + 'px'
-            _this.$refs.cont.style.height = size*oScale + 'px'
+          console.log(image.width);
+          console.log(image.height);
+          if(image.width >= image.height){
+            _this.$refs.img.height = 300
           }
-          else if(oW < oH){
-            size = oH
-            oScale = oW / oH
-            _this.$refs.cont.style.height = size + 'px'
-            _this.$refs.cont.style.width = size*oScale + 'px'
+          else{
+            _this.$refs.img.width = 300
           }
-          console.log(size);
-
-          // _this.$refs.cont.childNodes[0].style.width = size + 'px'
-          // _this.$refs.cont.childNodes[0].style.height = 'auto'
         }
       }
       reader.readAsDataURL(file);
@@ -72,9 +59,21 @@ export default {
 	.imgUpload{
 		width:100%;
 		height:100%;
-    .cont{
-      img{
-        width: 100%;
+    .clip{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.4);
+      .cont{
+        width: 300px;
+        height: 300px;
+        border: 1px solid #000;
+        overflow: auto;
+        img{
+
+        }
       }
     }
 	}
