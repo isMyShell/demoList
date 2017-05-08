@@ -2,17 +2,21 @@
   <div class="login">
     <h3>login</h3>
     <input ref='input' type="number" name="" placeholder="输入手机" @input='limitLenFn($event)' @blur='checkTelFn($event)'>
-    <span @click='clearTelFn'>x</span>
+    <span v-if='isClear' @click='clearTelFn'>x</span>
     <br>
     <input ref='input1' type="text" name="" value="" @input='test1Fn($event)'>
     <span v-if='isGet' @click='timeLine'>获取验证码</span>
-    <span v-if='isTimeLine'>{{time}}</span>
+    <span v-if='isTimeLine'>{{time}}s后再次获取验证码</span>
 
     <div v-if="test === '' || test1 ===''" @click='btnFn' class="btn readOnly" >
       登陆
     </div>
     <div v-if="test !=='' && test1 !==''" @click='btnFn' class="btn active">
       登陆
+    </div>
+
+    <div class="cover">
+      <div>请输入正确手机号</div>
     </div>
   </div>
 </template>
@@ -24,6 +28,7 @@ export default {
       test:'',
       test1:'',
       time:'',
+      isClear:false,
       isGet:true,
       isTimeLine:false,
       readonly:true,
@@ -35,6 +40,12 @@ export default {
       this.test1 = e.target.value
     },
     limitLenFn(e){
+      if(e.target.value.length === 0){
+        this.isClear = false
+      }
+      else{
+        this.isClear = true
+      }
       let telValue =  e.target.value.substring(0,11)
       e.target.value = telValue.substring(0,11)
       this.test = telValue
@@ -52,6 +63,7 @@ export default {
     clearTelFn(){
       this.$refs.input.value = ''
       this.$refs.input.focus()
+      this.isClear = false
     },
     timeLine(){
       this.isGet = false
@@ -85,6 +97,10 @@ export default {
 </script>
 
 <style lang="less">
+  .login{
+    width:100%;
+    height:100%;
+  }
   .btn{
     width: 80%;
     height: 20px;
@@ -97,5 +113,12 @@ export default {
   }
   .active{
     background: red;
+  }
+  .cover{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:#000;
+    opacity:0.2;
   }
 </style>
