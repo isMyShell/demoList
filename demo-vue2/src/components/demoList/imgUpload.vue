@@ -4,8 +4,11 @@
     <input ref='input' type="file" class="file" accept="image/*;capture=camera" name="img" @change="clipImg($event)">
     <canvas id="canvas" style="display: none"></canvas>
     <div class="clip">
+      <div class="imgCont" ref='imgCont'>
+        <img :src="imgSrc" alt="" class="img" ref='img'>
+      </div>
       <div ref='cont' class="cont">
-      	<img :src="imgSrc" alt="" class="img" ref='img'>
+
       </div>
     </div>
   </div>
@@ -38,12 +41,9 @@ export default {
           _this.imgSrc = image.src
           console.log(image.width);
           console.log(image.height);
-          if(image.width >= image.height){
-            _this.$refs.img.height = 300
-          }
-          else{
-            _this.$refs.img.width = 300
-          }
+          _this.$refs.img.width = 300
+          console.log(_this.$refs.img.width);
+          console.log(_this.$refs.img.height);
         }
       }
       reader.readAsDataURL(file);
@@ -64,17 +64,28 @@ export default {
       justify-content: center;
       align-items: center;
       width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.4);
-      .cont{
+      height: 80%;
+      background: rgba(0,0,0,0.3);
+      .imgCont{
+        position: relative;
         width: 300px;
-        height: 300px;
+        height: 100%;
         border: 1px solid #000;
         overflow: auto;
         img{
-
+          position: absolute;
+          top:50%;
+          left: 0;
+          transform:translateY(-50%);
+        }
+        .cont{
+          width: 300px;
+          height: 300px;
+          border: 1px solid #000;
+          overflow: auto;
         }
       }
+
     }
 	}
 </style>

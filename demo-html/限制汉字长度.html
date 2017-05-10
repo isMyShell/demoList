@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>限制汉字长度</title>
+  <style>
+    textarea{
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <textarea id='text' name="name"></textarea>
+  <input id='inp' type="text">
+  <script>
+    let text = document.getElementById('text')
+    text.addEventListener('blur',function(){
+      // console.log(text.value)
+      // console.log(text.value.length)
+    })
+
+    let inp = document.getElementById('inp')
+    inp.addEventListener('blur',function(){
+      let username = inp.value
+      console.log(inp.value)
+      console.log(inp.value.length)
+      if (!username.match( /^[\u4E00-\u9FA5a-zA-Z0-9_]{1,16}$/)){
+        console.log('输入错误')
+      }
+    })
+
+
+    // html:
+
+//  <input type="text" value="" name="username" id="username" onblur="checkUser()"/><span id="usertips"></span>
+//
+//
+//
+// js:
+//
+// function checkUser()
+//
+// {
+//
+// var username = $("#username").val();
+//
+// if (!username.match( /^[\u4E00-\u9FA5a-zA-Z0-9_]{3,20}$/)) {
+//
+// var msg = "汉字 英文字母 数字 下划线组成，3-20位";
+//
+// $("#usertips").html(msg);
+//
+// } else {
+//  $("#usertips").html('');
+// }
+// }
+  </script>
+</body>
+</html>
