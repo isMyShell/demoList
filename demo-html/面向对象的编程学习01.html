@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>面向对象</title>
+</head>
+<body>
+
+  <script>
+//1.枚举创建
+//     var cat1 = {};
+// 　  cat1.name = "大毛"; // 按照原型对象的属性赋值
+// 　  cat1.color = "黄色";
+
+//2.原始模式的改进
+    // function Cat(name, color){
+    //   return{
+    //     name:name,
+    //     color:color
+    //   }
+    // }
+    // let cat1 = Cat('小黑' ,'黑')
+    // let cat2 = Cat('小白' ,'白')
+    // console.log(cat1)
+    // console.log(cat1.name)
+    // console.log(cat2)
+
+//3.构造函数的模式(Constructor)
+    //内部使用了this  对构造函数使用new操作符
+    function Cat(name, color){
+      this.name = name
+      this.color = color
+      // console.log(this)//window
+    }
+    let cat1 = new Cat('小黑', '黑') //new操作符会改变this指向
+    let cat2 = new Cat('小白', '白')
+    console.log(cat1)
+    console.log(cat2)
+    console.log(cat1.constructor === Cat)
+    //Javascript还提供了一个instanceof运算符，验证原型对象与实例对象之间的关系。
+    console.log(cat1 instanceof Cat)
+//4.构造函数模式的问题（内存的浪费）
+    //每个实例都会有共有的属性和方法，造成内存的浪费
+    //思路：让共有的属性和方法在内存中只生成一次，让所有的实例改属性和方法都指向一个内存地址
+//5.Prototype模式
+  //在JS中每个构造函数都有一个Prototype属性，指向另一个对象。这个对象的属性和方法都会被构造函数的实例继承
+  function Cat(name,color){
+　　　　this.name = name;
+　　　　this.color = color;
+　　}
+　　Cat.prototype.type = "猫科动物";
+　　Cat.prototype.eat = function(){alert("吃老鼠")};
+//6.Prototype模式的验证方法
+  //6.1 isPrototypeOf()
+  Cat.prototype.isPrototypeOf(cat1)
+  //6.2 hasOwnProperty() 本地的属性，不是继承prototype的属性
+  cat1.hasOwnProperty("name") //true
+  //6.3 in 运算符   某个实例是否含有某个属性，不管是不是本地属性。
+  "name" in cat1
+  </script>
+</body>
+</html>
