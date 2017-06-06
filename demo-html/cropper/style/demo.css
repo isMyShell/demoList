@@ -1,0 +1,22 @@
+html,body{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+img {
+  max-width: 100%; /* This rule is very important, please do not ignore this! */
+}
+#box{
+  height:100%;
+  width:100%;
+}
+.odiv{
+  width: 100%;
+  border: 1px solid #e6e6e6;
+  font-size: 18px;
+  color: #555;
+  padding: 5px;
+  margin-right: 10px;
+  text-align: center;
+}

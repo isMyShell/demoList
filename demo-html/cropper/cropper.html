@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>demo图片裁剪上传</title>
+  <link rel="stylesheet" href="./style/cropper.css">
+  <link rel="stylesheet" href="./style/demo.css">
+</head>
+<body>
+  <div id="box" style="height:100%;width:100%;display:flex;flex-direction:column;">
+    <input id='file' type="file" accept="image/*" capture="camera">
+    <div style="width:100%;flex:1";>
+      <img id="image" src="./img/demo01.png">
+    </div>
+    <canvas id="canvas" width="300" height="0"></canvas>
+    <img id='result' src="" alt="" style="width:300px;height:300px;">
+    <div id='rotate' class='odiv'>旋转</div>
+    <div id='getImage' class='odiv'>确定</div>
+
+  </div>
+
+
+
+
+  <!-- <script src='./js/jquery-3.2.1.js'></script> -->
+  <script src='./js/jquery-2.1.4.min.js'></script>
+  <script src='./js/cropper.js'></script>
+  <script type="text/javascript">
+  var URL = window.URL || window.webkitURL;
+  $('#file').on('change',function(){
+    alert(1)
+    var file = event.target.files[0]
+    console.log(event.target.files[0])
+    alert(file)
+    let blobURL = URL.createObjectURL(file);
+    console.log(blobURL)
+    alert(blobURL)
+    $('#image').one('built.cropper', function () {
+
+        // Revoke when load complete
+        URL.revokeObjectURL(blobURL);
+      }).cropper('reset').cropper('replace', blobURL);
+      $('#file').val('');
+    } else {
+      window.alert('Please choose an image file.');
+    }
+
+  })
+  $('#image').cropper({
+    aspectRatio: 1 / 1,
+    autoCropArea: 0.3,
+    zoom: -0.2,
+    crop: function(e) {
+      // Output the result data for cropping image.
+      console.log(e.x);
+      console.log(e.y);
+      console.log(e.width);
+      console.log(e.height);
+      console.log(e.rotate);
+      console.log(e.scaleX);
+      console.log(e.scaleY);
+    },
+    checkImageOrigin: true,
+    built: function () {
+        $("#image").cropper('getCroppedCanvas')
+        $("#image").cropper('getCroppedCanvas', {
+          width: 160,
+          height: 90,
+          beforeDrawImage: function(canvas) {
+            const context = canvas.getContext('2d');
+
+            context.imageSmoothingEnabled = false;
+            context.imageSmoothingQuality = 'high';
+          },
+          // var dataURL = $('#image').cropper("getCroppedCanvas");
+          // var imgurl = dataURL.toDataURL("image/png", );
+          // console.log(dataURL)
+        });
+
+    }
+  });
+  $('#rotate').on('click',function(){
+    $('#image').cropper('rotate', 90)
+  })
+  $('#getImage').on('click',function(){
+    var dataURL = $('#image').cropper("getCroppedCanvas");
+    var imgurl = dataURL.toDataURL("image/png", 1);
+    console.log(imgurl)
+    $('#result').attr('src',imgurl)
+  })
+  </script>
+</body>
+</html>
