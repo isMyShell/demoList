@@ -8,6 +8,7 @@ import Page4 from '../components/Page4'
 import Page5 from '../components/page5'
 import waterfall from '../components/demoList/waterfall'
 import imgUpload from '../components/demoList/imgUpload'
+import imgUpload1 from '../components/demoList/imgUpload1'
 import login from '../components/demoList/login.vue'
 
 Vue.use(Router)
@@ -59,6 +60,11 @@ export default new Router({
       path: '/demoList/imgUpload',
       name: 'imgUpload',
       component: imgUpload
+    },
+    {
+      path: '/demoList/imgUpload1',
+      name: 'imgUpload1',
+      component: imgUpload1
     },
 		{
       path: '/demoList/login',

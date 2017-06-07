@@ -16,8 +16,9 @@ export default {
         {title:"table切换"},
         {title:"唤醒app"},
         {title:"loading遮罩"},
-        {title:"本地图片上传裁剪"},
-        {title:"手机登陆"}
+        {title:"本地图片上传裁剪1"},
+        {title:"手机登陆"},
+        {title:"本地图片上传裁剪2"}
       ]
     }
   },
@@ -43,6 +44,9 @@ export default {
         break;
       case 5:
         this.$router.push({path:'/demoList/login'})
+        break;
+      case 6:
+        this.$router.push({path:'/demoList/imgUpload1'})
         break;
       }
 

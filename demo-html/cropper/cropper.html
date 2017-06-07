@@ -12,13 +12,13 @@
 <body>
   <div id="box" style="height:100%;width:100%;display:flex;flex-direction:column;">
     <input id='file' type="file" accept="image/*" capture="camera">
-    <div style="width:100%;flex:1";>
+    <div style="width:300px;height:400px;">
       <img id="image" src="./img/demo01.png">
     </div>
     <canvas id="canvas" width="300" height="0"></canvas>
-    <img id='result' src="" alt="" style="width:300px;height:300px;">
+    <img id='result' src="" alt="" style="width:30px;height:30px;">
     <div id='rotate' class='odiv'>旋转</div>
-    <div id='getImage' class='odiv'>确定</div>
+    <div id='getImage' class='odiv' >确定</div>
 
   </div>
 
@@ -34,7 +34,6 @@
     alert(1)
     var file = event.target.files[0]
     console.log(event.target.files[0])
-    alert(file)
     let blobURL = URL.createObjectURL(file);
     console.log(blobURL)
     alert(blobURL)
@@ -42,11 +41,9 @@
 
         // Revoke when load complete
         URL.revokeObjectURL(blobURL);
-      }).cropper('reset').cropper('replace', blobURL);
-      $('#file').val('');
-    } else {
-      window.alert('Please choose an image file.');
-    }
+    }).cropper('reset').cropper('replace', blobURL);
+    $('#file').val('');
+
 
   })
   $('#image').cropper({
