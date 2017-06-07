@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="imgUpload">
     <h3>图片上传 裁剪</h3>
-    <input ref='input' id='file' type="file" class="file" accept="image/*;capture=camera" name="img" @change="clipImg($event)">
+    <input ref='input' id='file' type="file" class="file" accept="image/*" capture="camera" name="img" @change="clipImg($event)">
     <div id='box'>
       <img id="image" src="../../assets/logo.png">
     </div>
@@ -40,7 +40,6 @@ export default {
       var file = event.target.files[0]
       console.log(event.target.files[0])
       let blobURL = URL.createObjectURL(file);
-      alert(blobURL)
       $('#image').one('built.cropper', function () {
           // Revoke when load complete
           URL.revokeObjectURL(blobURL);
@@ -60,21 +59,21 @@ export default {
 	},
 	mounted(){
     $('#image').cropper({
-    aspectRatio: 1 / 1,
-    autoCropArea: 0.3,
-    zoom: -0.2,
-    crop: function(e) {
-      // Output the result data for cropping image.
-      console.log(e.x);
-      console.log(e.y);
-      console.log(e.width);
-      console.log(e.height);
-      console.log(e.rotate);
-      console.log(e.scaleX);
-      console.log(e.scaleY);
-    },
-    checkImageOrigin: true,
-    built: function () {
+      aspectRatio: 1 / 1,
+      autoCropArea: 0.3,
+      zoom: -0.2,
+      crop: function(e) {
+        // Output the result data for cropping image.
+        console.log(e.x);
+        console.log(e.y);
+        console.log(e.width);
+        console.log(e.height);
+        console.log(e.rotate);
+        console.log(e.scaleX);
+        console.log(e.scaleY);
+      },
+      checkImageOrigin: true,
+      built: function () {
         $("#image").cropper('getCroppedCanvas')
         $("#image").cropper('getCroppedCanvas', {
           width: 160,
@@ -86,9 +85,8 @@ export default {
             context.imageSmoothingQuality = 'high';
           }
         });
-
-    }
-  });
+      }
+    });
 	}
 }
 </script>
@@ -106,9 +104,12 @@ export default {
     height: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
   #box{
     flex:1;
+    width: 300px;
+    height: 300px;
   }
   .odiv{
     height: 44px;
