@@ -18,7 +18,8 @@ export default {
         {title:"loading遮罩"},
         {title:"本地图片上传裁剪1"},
         {title:"手机登陆"},
-        {title:"本地图片上传裁剪2"}
+        {title:"本地图片上传裁剪2"},
+        {title:"单行，多行文本居中"}
       ]
     }
   },
@@ -47,6 +48,9 @@ export default {
         break;
       case 6:
         this.$router.push({path:'/demoList/imgUpload1'})
+        break;
+      case 7:
+        this.$router.push({path:'/demoList/textDemo'})
         break;
       }
 

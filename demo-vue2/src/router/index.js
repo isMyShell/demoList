@@ -10,7 +10,7 @@ import waterfall from '../components/demoList/waterfall'
 import imgUpload from '../components/demoList/imgUpload'
 import imgUpload1 from '../components/demoList/imgUpload1'
 import login from '../components/demoList/login.vue'
-
+import textDemo from '../components/demoList/textDemo.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -65,6 +65,11 @@ export default new Router({
       path: '/demoList/imgUpload1',
       name: 'imgUpload1',
       component: imgUpload1
+    },
+     {
+      path: '/demoList/textDemo',
+      name: 'textDemo',
+      component: textDemo
     },
 		{
       path: '/demoList/login',
