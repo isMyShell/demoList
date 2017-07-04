@@ -19,7 +19,8 @@ export default {
         {title:"本地图片上传裁剪1"},
         {title:"手机登陆"},
         {title:"本地图片上传裁剪2"},
-        {title:"单行，多行文本居中"}
+        {title:"单行，多行文本居中"},
+        {title:"vue event bus"}
       ]
     }
   },
@@ -51,6 +52,9 @@ export default {
         break;
       case 7:
         this.$router.push({path:'/demoList/textDemo'})
+        break;
+      case 8:
+        this.$router.push({path:'/eventBUS/father'})
         break;
       }
 

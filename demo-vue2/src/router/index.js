@@ -11,6 +11,7 @@ import imgUpload from '../components/demoList/imgUpload'
 import imgUpload1 from '../components/demoList/imgUpload1'
 import login from '../components/demoList/login.vue'
 import textDemo from '../components/demoList/textDemo.vue'
+import Father from '../components/eventBUS/father.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -75,6 +76,11 @@ export default new Router({
       path: '/demoList/login',
       name: 'login',
       component: login
+    },
+		{
+      path: '/eventBUS/father',
+      name: 'father',
+      component: Father
     }
   ],
   // scrollBehavior (Page3, Page2, savedPosition) {
