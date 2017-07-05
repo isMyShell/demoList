@@ -12,6 +12,9 @@ import imgUpload1 from '../components/demoList/imgUpload1'
 import login from '../components/demoList/login.vue'
 import textDemo from '../components/demoList/textDemo.vue'
 import Father from '../components/eventBUS/father.vue'
+import vuexCountDemo from '../components/vuex/vuex_count_demo.vue'
+import myDirective from '../components/myDirective/myDirective.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -81,6 +84,16 @@ export default new Router({
       path: '/eventBUS/father',
       name: 'father',
       component: Father
+    },
+		{
+      path: '/vuex/vue_count_demo',
+      name: 'vuexCountDemo',
+      component: vuexCountDemo
+    },
+		{
+      path: '/myDirective',
+      name: 'myDirective',
+      component: myDirective
     }
   ],
   // scrollBehavior (Page3, Page2, savedPosition) {

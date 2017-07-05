@@ -20,7 +20,9 @@ export default {
         {title:"手机登陆"},
         {title:"本地图片上传裁剪2"},
         {title:"单行，多行文本居中"},
-        {title:"vue event bus"}
+        {title:"vue event bus"},
+        {title:"vuex简单的计数"},
+        {title:'vue自定义指令'}
       ]
     }
   },
@@ -56,8 +58,13 @@ export default {
       case 8:
         this.$router.push({path:'/eventBUS/father'})
         break;
+      case 9:
+        this.$router.push({path:'/vuex/vue_count_demo'})
+        break;
+      case 10:
+        this.$router.push({path:'/myDirective'})
+        break;
       }
-
     }
   }
 }
