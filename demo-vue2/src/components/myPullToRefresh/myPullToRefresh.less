@@ -1,0 +1,46 @@
+body {
+		font-size: 12px;
+		-webkit-user-select: none;
+		-webkit-text-size-adjust: none;
+		font-family: helvetica;
+
+}
+.main{
+	width: 100%;
+	height: 100%;
+	overflow-y: scroll;
+}
+#content{
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+	position: absolute;
+	left: 0;
+	top: 0;
+	/*    -webkit-touch-callout:none;*/
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	width: 100%;
+	padding: 0;
+}
+#content::-webkit-scrollbar{
+	display: none;
+}
+#sildePull{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	background-color: #888;
+	height: 30px;
+}
+#sildeUpdate{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: pink;
+	height: 40px;
+}
+li{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

@@ -18,3 +18,8 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
+
+router.beforeEach((to, from, next) => {
+  console.log(`from ${from.path} to ${to.path}`)
+  next()  //必须调用
+})

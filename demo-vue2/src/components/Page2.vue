@@ -22,7 +22,8 @@ export default {
         {title:"单行，多行文本居中"},
         {title:"vue event bus"},
         {title:"vuex简单的计数"},
-        {title:'vue自定义指令'}
+        {title:'vue自定义指令'},
+        {title:'下拉刷新'}
       ]
     }
   },
@@ -63,6 +64,9 @@ export default {
         break;
       case 10:
         this.$router.push({path:'/myDirective'})
+        break;
+      case 11:
+        this.$router.push({path:'/myPullToRefresh'})
         break;
       }
     }

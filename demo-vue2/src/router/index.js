@@ -14,6 +14,7 @@ import textDemo from '../components/demoList/textDemo.vue'
 import Father from '../components/eventBUS/father.vue'
 import vuexCountDemo from '../components/vuex/vuex_count_demo.vue'
 import myDirective from '../components/myDirective/myDirective.vue'
+import myPullToRefresh from '../components/myPullToRefresh/myPullToRefresh.vue'
 
 Vue.use(Router)
 
@@ -94,6 +95,11 @@ export default new Router({
       path: '/myDirective',
       name: 'myDirective',
       component: myDirective
+    },
+		{
+      path: '/myPullToRefresh',
+      name: 'myPullToRefresh',
+      component: myPullToRefresh
     }
   ],
   // scrollBehavior (Page3, Page2, savedPosition) {
@@ -102,4 +108,7 @@ export default new Router({
   //   console.log(savedPosition)
   //   return savedPosition
   // }
+  //
+
+
 })
