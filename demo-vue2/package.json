@@ -12,6 +12,7 @@
     "animate.css": "^3.5.2",
     "imports-loader": "^0.7.1",
     "vue": "^2.2.1",
+    "vue-qart": "^2.0.7",
     "vue-router": "^2.2.0"
   },
   "devDependencies": {

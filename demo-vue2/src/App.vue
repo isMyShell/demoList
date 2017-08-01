@@ -9,7 +9,7 @@
       <router-link :to="'/Page1'">
         <div>loadingCover</div>
       </router-link>
-      <router-link :to="'/Page2'">
+      <router-link :to="'/demolist'">
         <div>demoList</div>
       </router-link>
       <router-link :to="'/Page3'">

@@ -2,6 +2,9 @@
   <div class="Page3">
     <h1>{{ msg }}</h1>
     <ul>
+      <video src="http://124.193.228.157/vhot2.qqvideo.tc.qq.com/AYqCMLrlYqW1VQFGg71nMkGh-iUMoV3rg1tKNTrFRdb0/t0530gz26of.mp4?vkey=DAD45AD26673C9A6D753292DC2B83D56FAAAB49BA456D1A9C22A393657C5E39FCD8EBE2402CCA575A1A2B5F5CDEAADDE8F561B195B308760635C374AF94B170870207E5A4E6C86FAE5EFC40DE6E85D0192EDC281C600E3F1&br=60&platform=2&fmt=auto&level=0&sdtfrom=v3010&guid=3e2e3a5b97b0404d1de69cfff0688352" controls="controls">
+        您的浏览器不支持 video 标签。
+      </video>
       <li>Page3~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~1</li>
       <li>Page3~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~2</li>
       <li>Page3~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~3</li>

@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../components/Home'
 import Page1 from '../components/Page1'
-import Page2 from '../components/Page2'
+import demoList from '../components/demolist'
 import Page3 from '../components/Page3'
 import Page4 from '../components/Page4'
 import Page5 from '../components/page5'
@@ -15,6 +15,7 @@ import Father from '../components/eventBUS/father.vue'
 import vuexCountDemo from '../components/vuex/vuex_count_demo.vue'
 import myDirective from '../components/myDirective/myDirective.vue'
 import myPullToRefresh from '../components/myPullToRefresh/myPullToRefresh.vue'
+import QArt from '../components/qart/index_qart.vue'
 
 Vue.use(Router)
 
@@ -37,9 +38,9 @@ export default new Router({
       component: Page1
     },
     {
-      path: '/Page2',
-      name: 'Page2',
-      component: Page2
+      path: '/demolist',
+      name: 'demolist',
+      component: demoList
     },
     {
       path: '/Page3',
@@ -100,6 +101,11 @@ export default new Router({
       path: '/myPullToRefresh',
       name: 'myPullToRefresh',
       component: myPullToRefresh
+    },
+    {
+      path: '/index_qart',
+      name: 'QArt',
+      component: QArt
     }
   ],
   // scrollBehavior (Page3, Page2, savedPosition) {

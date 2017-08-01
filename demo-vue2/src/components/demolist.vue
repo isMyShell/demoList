@@ -23,7 +23,8 @@ export default {
         {title:"vue event bus"},
         {title:"vuex简单的计数"},
         {title:'vue自定义指令'},
-        {title:'下拉刷新'}
+        {title:'下拉刷新'},
+        {title:'二维码生成'}
       ]
     }
   },
@@ -68,6 +69,9 @@ export default {
       case 11:
         this.$router.push({path:'/myPullToRefresh'})
         break;
+      case 12:
+      this.$router.push({path:'/index_qart'})
+      break;
       }
     }
   }
