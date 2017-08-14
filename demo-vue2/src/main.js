@@ -4,10 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import axios from 'axios'
-
+import vConsole from 'vconsole';
 import 'animate.css'
 
-
+Vue.use(vConsole)
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 
