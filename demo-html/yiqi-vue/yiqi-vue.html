@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.bootcss.com/vue/2.3.4/vue.min.js"></script>
+	<script src="https://cdn.bootcss.com/vue-resource/1.3.4/vue-resource.min.js"></script>
+  <script src='https://unpkg.com/vue-router@2.0.0/dist/vue-router.js '></script>
+  <title>yiqi - vue</title>
+</head>
+<body>
+  <div id='app'>
+    <!-- <test1></test1>
+    <test2></test2> -->
+
+    <router-view></router-view>
+  </div>
+
+  <template id="test1">
+    <div>
+      <p>{{message}}</p>
+      <div @click.self='jump1' style="padding-bottom:20px;">点击我跳到test2路由</div>
+
+      <div @click='router1'>tab1</div>
+      <div @click='router2'>tab2</div>
+      <div @click='router3'>tab3</div>
+      <router-view></router-view>
+    </div>
+
+  </template>
+
+  <template id="test2">
+    <div>
+      <i>{{message}}</i>
+      <div @click='jump2'>点击我跳到test1路由</div>
+    </div>
+  </template>
+
+  <template id="test1_router1">
+    <div>
+      <h3>{{message}}</h3>
+    </div>
+  </template>
+
+  <template id="test1_router2">
+    <div>
+      <h3>{{message}}</h3>
+    </div>
+  </template>
+
+  <template id="test1_router3">
+    <div>
+      <h3>{{message}}</h3>
+    </div>
+  </template>
+
+  <script>
+
+    Vue.http.options.emulateJSON = true;
+    const test1 = Vue.component('test1',{
+      template:'#test1',
+      data(){
+        return {
+          message:'test1'
+        }
+      },
+      methods:{
+        jump1(){
+          this.$router.push({path:'/test2'})
+        },
+        router1(){
+          this.$router.push({path:'/test1/test1_router1'})
+        },
+        router2(){
+          this.$router.push({path:'/test1/test1_router2'})
+        },
+        router3(){
+          this.$router.push({path:'/test1/test1_router3'})
+        }
+      }
+    })
+
+    const test1_router1 = Vue.component('test1_router1',{
+      template:'#test1_router1',
+      data(){
+        return {
+          message:'test1_router1'
+        }
+      }
+
+    })
+
+    const test1_router2 = Vue.component('test1_router2',{
+      template:'#test1_router2',
+      data(){
+        return {
+          message:'test1_router2'
+        }
+      }
+    })
+
+    const test1_router3 = Vue.component('test1_router3',{
+      template:'#test1_router3',
+      data(){
+        return {
+          message:'test1_router3'
+        }
+      }
+    })
+
+    const test2 = Vue.component('test2',{
+      template:'#test2',
+      data(){
+        return {
+          message:'test2'
+        }
+      },
+      methods:{
+        jump2(){
+
+          this.$router.push({path:'/test1'})
+        }
+      }
+    })
+
+    const router = new VueRouter({
+        routes: [
+            {
+              path: '/',
+              component: test1
+            },
+            {
+              path: '/test1',
+              component: test1,
+              children:[
+                {
+                  path: 'test1_router1',
+                  component: test1_router1
+                },
+                {
+                  path: 'test1_router2',
+                  component: test1_router2
+                },
+                {
+                  path: 'test1_router3',
+                  component: test1_router3
+                }
+              ]
+            },
+            {
+              path: '/test2',
+              component: test2
+            }
+        ]
+
+    });
+
+
+    const app = new Vue({router}).$mount('#app')
+
+  </script>
+</body>
+</html>
