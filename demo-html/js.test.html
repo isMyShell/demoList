@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>js_test</title>
+</head>
+<body>
+  <p>Image to use:</p>
+  <img id="scream" src="./111.jpg" alt="The Scream" width="220" >
+  <p>Canvas:</p>
+  <canvas id="myCanvas" width="250"  style="border:1px solid #d3d3d3;z-index:1;position:fixed;top:100px;left:0;">
+    您的浏览器不支持 HTML5 canvas 标签。
+  </canvas>
+  <img id='base64'src="" alt="" style="z-index:2888;position:fixed;top:100px;left:0;">
+  <script src="./base64.js" charset="utf-8"></script>
+  <script type="text/javascript">
+  var c=document.getElementById("myCanvas");
+
+  var ctx=c.getContext("2d");
+  var img=document.getElementById("scream");
+  var imgW = 220
+  var imgH = img.height
+  var imgStartX = 0
+  var imgStartY = 0
+  var canvasStartX = 0
+  var canvasStartY = 0
+  var clientW = imgW
+  var clientH = imgH
+  c.width = 220
+  c.height = imgH*3
+  // img.crossOrigin = "Anonymous";
+  img.onload = function() {
+    ctx.drawImage(img,0,0,220,imgH,0,imgH*0,220,imgH);
+    ctx.drawImage(img,0,0,220,imgH,0,imgH*1,220,imgH);
+    ctx.drawImage(img,0,0,220,imgH,0,imgH*2,220,imgH);
+    console.log(c)
+    var url = c.toDataURL()
+    // console.log(url)
+    var my = document.getElementById('base64')
+  	my.src = url
+  }
+
+  	//console.log(a)
+
+  </script>
+</body>
+</html>

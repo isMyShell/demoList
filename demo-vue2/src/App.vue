@@ -16,7 +16,6 @@
         <div>Page3</div>
       </router-link>
     </div>
-    
   </div>
 </template>
 
