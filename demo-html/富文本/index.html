@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>富文本</title>
+  <link href="https://cdn.quilljs.com/1.3.3/quill.snow.css" rel="stylesheet">
+</head>
+<body>
+  <div id="editor">
+    <p>Hello World!</p>
+    <p>Some initial <strong>bold</strong> text</p>
+    <p><br></p>
+  </div>
+
+  <script src="https://cdn.quilljs.com/1.3.3/quill.js"></script>
+  <script>
+    var quill = new Quill('#editor', {
+      theme: 'snow'
+    });
+    quill.deleteText(6, 4);
+    //console.log(quill.getContents())
+    console.log(quill.getText())
+    quill.insertEmbed(undefined, 'image', 'https://cn.vuejs.org/images/logo.png');
+    // quill.setText('Hello\n');
+    quill.format('color', 'red');
+    quill.format('align', 'right');
+    quill.formatLine(4, 4, 'align', 'center');  // center aligns both lines
+    quill.blur();
+    quill.focus();
+    quill.update()
+    quill.on('text-change', function(delta, oldDelta, source) {
+      if (source == 'api') {
+        console.log("An API call triggered this change.");
+      } else if (source == 'user') {
+        console.log("A user action triggered this change.");
+      }
+    });
+    quill.on('selection-change', function(range, oldRange, source) {
+      if (range) {
+        if (range.length == 0) {
+          console.log('User cursor is on', range.index);
+        } else {
+          var text = quill.getText(range.index, range.length);
+          console.log('User has highlighted', text);
+        }
+      } else {
+        console.log('Cursor not in the editor');
+      }
+    });
+    // quill.enable(false);
+  </script>
+
+</body>
+</html>
