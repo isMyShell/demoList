@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>jq</title>
+  <script src="../jquery.js" charset="utf-8"></script>
+</head>
+<body>
+  <label for="apple" onclick="getChecked()">
+    <input type="checkbox" checked='false' name="apple" value="苹果" id='apple'>苹果
+  </label>
+  
+  <select name="category[]" id='select'>
+    <option value='php'>
+      php 教程
+    </option>
+    <option value='java'>
+      java 教程
+    </option>
+    <option value='mysl'>
+      mysql 教程
+    </option>
+    <option value='js'>
+      js 教程
+    </option>
+    <option value='html'>
+      html 教程
+    </option>
+   </select>
+  <script>
+    
+    
+    function getChecked(){
+      console.log($('input[name=apple]').prop('checked'))
+    }
+    
+    function Select(select){
+      this.init()
+    }
+    
+    Select.prototype = {
+      init:function() {
+        this.dom = $(select)
+        this.val = 'nope'
+      },
+      getValue:function(){
+        if (!this.dom.val()){
+          this.val = 'noop'
+        }else {
+          this.val = this.dom.val()
+        }
+        this.dom.on('change',() => {
+          this.val = this.dom.val()
+          console.log(this.val)
+        })
+        console.log(this.val)
+      }
+      
+    }
+    let sl = new Select('#select')
+    
+    sl.getValue()
+    
+  </script>
+</body>
+</html>
